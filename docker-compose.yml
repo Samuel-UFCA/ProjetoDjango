@@ -1,0 +1,17 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/app
+        links:
+            - db
+
+    db:
+        image: "postgres:13.2"
+        ports:
+            - "5400:5432"
+        environment:
+            POSTGRES_PASSWORD: postgres
